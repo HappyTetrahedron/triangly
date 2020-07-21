@@ -37,7 +37,6 @@ function reshuffle() {
             .filter(col => col.slant !== triangleSlant)
             .sort((colA, colB) => colA.height - colB.height)
             [0];
-        console.log(bestCol);
         bestCol.node.appendChild(tri);
         bestCol.height = bestCol.height + triangleHeight;
         bestCol.slant = triangleSlant;
@@ -45,45 +44,9 @@ function reshuffle() {
     }
 }
 
-/*
-function reshuffle() {
-    numCols = getColumnCountForWidth(window.innerWidth);
-    cols = [];
-    for(var i = 0; i < numCols; i = i + 1) {
-        cols.push(document.getElementById(`col-${i}`));
-    }
-
-    for (let column in cols) {
-        while(column.firstChild) {
-            column.removeChild(column.firstChild);
-        }
-    }
-
-    var i = 0;
-    if (numCols % 2 === 1) {
-        for (let tri of triangles) {
-            cols[i % numCols].appendChild(tri);
-            i = i + 1;
-        }
-    }
-    else {
-        for (let tri of triangles) {
-            console.log(numCols - 0.5 - Math.abs(i % (numCols * 2) - numCols + 0.5))
-            cols[numCols - 0.5 - Math.abs(i % (numCols * 2) - numCols + 0.5)].appendChild(tri);
-            i = i + 1;
-        }
-
-    }
-
-}
-*/
-
-
 function checkResize() {
     var width = window.innerWidth;
-    // console.log("check " + width);
     if (getColumnCountForWidth(width) != numCols) {
-        // console.log("succ");
         reshuffle();
     }
 }
