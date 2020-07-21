@@ -19,7 +19,10 @@
 :root {
     --big-margin: 2em;
     --small-margin: 1em;
+    --tiny-margin: 0.5em;
     --max-side: calc((1300px - 4.15 * var(--big-margin)) * 1.15 / 3);
+
+    --small-triangle-side: calc(var(--max-side) * 0.5 - var(--small-margin) * 0.86 * 2);
 
     --wrapper-width: 1300px;
     --body-width: 100%;
@@ -48,6 +51,7 @@
     :root {
         --big-margin: 1.5em;
         --small-margin: 0.75em;
+        --tiny-margin: 0.25em;
         --max-side: calc((100vw - 0.5 * var(--big-margin)) * 1.15 );
 
         --trapezoid-big-width: calc(var(--max-side) * 0.86 + var(--big-margin) * 0.75);
@@ -142,33 +146,61 @@ div#top-shape {
     margin-top: calc((var(--max-side) * -0.25) + (var(--small-margin) * 0.86 * 3));
 }
 
+.triangle-tiny {
+    height: calc(var(--small-triangle-side) * 0.5 - var(--tiny-margin) * 0.86 * 2);
+    width: calc((var(--small-triangle-side) * 0.5 - var(--tiny-margin) * 0.86 * 2) * 0.86);
+    margin-top: calc((var(--small-triangle-side) * -0.25) + (var(--tiny-margin) * 0.86 * 3));
+}
+
 .triangle-right .triangle-small {
     margin-left: calc((var(--max-side) * 0.5 * 0.86) + var(--small-margin) * 1.5);
+}
+
+.triangle-right .triangle-tiny {
+    margin-left: calc((var(--small-triangle-side) * 0.5 * 0.86) + var(--tiny-margin) * 1.5);
 }
 
 .triangle-left .triangle-a {
     margin-top: 0;
 }
 
-.triangle-left .triangle-b {
-margin-left: var(--small-margin);
+.triangle-left .triangle-b.triangle-small {
+    margin-left: var(--small-margin);
 }
 
-.triangle-left .triangle-d {
+.triangle-left .triangle-b.triangle-tiny {
+    margin-left: var(--tiny-margin);
+}
+
+.triangle-left .triangle-d.triangle-small {
     margin-top: calc((var(--max-side) * -0.75) + (var(--small-margin) * 0.86));
     margin-left: calc((var(--max-side) * 0.5 * 0.86) + var(--small-margin) * 1.5);
+}
+
+.triangle-left .triangle-d.triangle-tiny {
+    margin-top: calc((var(--small-triangle-side) * -0.75) + (var(--tiny-margin) * 0.86));
+    margin-left: calc((var(--small-triangle-side) * 0.5 * 0.86) + var(--tiny-margin) * 1.5);
 }
 
 .triangle-right .triangle-a {
     margin-top: 0;
 }
 
-.triangle-right .triangle-b {
+.triangle-right .triangle-b.triangle-small {
     margin-left: calc((var(--max-side) * 0.5 * 0.86) + var(--small-margin) * 0.5);
 }
 
-.triangle-right .triangle-d {
+.triangle-right .triangle-b.triangle-tiny {
+    margin-left: calc((var(--small-triangle-side) * 0.5 * 0.86) + var(--tiny-margin) * 0.5);
+}
+
+.triangle-right .triangle-d.triangle-small {
     margin-top: calc((var(--max-side) * -0.75) + (var(--small-margin) * 0.86));
+    margin-left: 0;
+}
+
+.triangle-right .triangle-d.triangle-tiny {
+    margin-top: calc((var(--small-triangle-side) * -0.75) + (var(--tiny-margin) * 0.86));
     margin-left: 0;
 }
 
@@ -180,6 +212,11 @@ margin-left: var(--small-margin);
 .triangle-spacer-small {
     height: calc(var(--max-side) * 0.5 - var(--small-margin) * 0.86 * 2);
     width: calc((var(--max-side) * 0.5 - var(--small-margin) * 0.86 * 2) * 0.86);
+}
+
+.triangle-spacer-tiny {
+    height: calc(var(--small-triangle-side) * 0.5 - var(--tiny-margin) * 0.86 * 2);
+    width: calc((var(--small-triangle-side) * 0.5 - var(--tiny-margin) * 0.86 * 2) * 0.86);
 }
 
 .trapezoid > .triangle-spacer-big {
