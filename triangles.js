@@ -19,7 +19,7 @@
 
 
 var triangles = [];
-var images = []
+var images = [];
 
 const maxWidthSm = 500;
 const maxWidthMd = 1000;
