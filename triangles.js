@@ -26,9 +26,9 @@ const maxWidthMd = 1000;
 var numCols = getColumnCountForWidth(window.innerWidth);
 
 function reshuffleInitial() {
-    for (let child of document.getElementById("col-0").children) {
+    [].slice.call(document.getElementById("col-0").children).forEach(function(child) {
         triangles.push(child);
-    }
+    });
     reshuffle();
 }
 
@@ -37,31 +37,31 @@ function reshuffle() {
     cols = [];
     for(var i = 0; i < numCols; i = i + 1) {
         cols.push({
-            node: document.getElementById(`col-${i}`),
+            node: document.getElementById('col-' + i),
             slant: i % 2 === 0 ? 'right' : 'left',
             height: 0,
         });
     }
 
-    for (let column of cols) {
+    cols.forEach(function(column) {
         while(column.node.firstChild) {
             column.node.removeChild(column.node.firstChild);
         }
-    }
+    });
 
-    for (let tri of triangles) {
+    triangles.forEach(function(tri) {
         triangleHeight = tri.classList.contains('trapezoid') ? 3 : 1;
         triangleSlant = tri.classList.contains('triangle-left') || tri.classList.contains('trapezoid-left') ? 'left' : 'right';
 
         bestCol = cols
-            .filter(col => col.slant !== triangleSlant)
-            .sort((colA, colB) => colA.height - colB.height)
+            .filter(function(col) { return col.slant !== triangleSlant; })
+            .sort(function(colA, colB) { return colA.height - colB.height; })
             [0];
         bestCol.node.appendChild(tri);
         bestCol.height = bestCol.height + triangleHeight;
         bestCol.slant = triangleSlant;
 
-    }
+    });
 }
 
 function checkResize() {
