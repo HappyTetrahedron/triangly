@@ -21,6 +21,7 @@
     --small-margin: 1em;
     --tiny-margin: 0.5em;
     --max-side: calc((1300px - 4.15 * var(--big-margin)) * 1.15 / 3);
+    --inner-margin: calc(var(--max-side) * 0.07);
 
     --small-triangle-side: calc(var(--max-side) * 0.5 - var(--small-margin) * 0.86 * 2);
 
@@ -64,6 +65,23 @@ html, body {
     margin: 0;
     overflow-x: hidden;
     width: 100%;
+    font-size: calc(var(--max-side) * 0.035);
+}
+
+h1 {
+    font-size: calc(var(--max-side) * 0.07);
+}
+
+h2 {
+    font-size: calc(var(--max-side) * 0.05);
+}
+
+h3 {
+    font-size: calc(var(--max-side) * 0.042);
+}
+
+p {
+    font-size: calc(var(--max-side) * 0.035);
 }
 
 div#wrapper {
@@ -76,9 +94,9 @@ div.accent {
 }
 
 div.text {
-    padding-left: calc(2 * var(--big-margin));
+    padding-left: calc(2 * var(--inner-margin));
     position: relative;
-    left: calc(-1 * var(--big-margin));
+    left: calc(-1 * var(--inner-margin));
 }
 
 div.title {
@@ -89,12 +107,12 @@ div.title {
 
 .triangle-left > div.title {
     justify-content: flex-start;
-    padding-left: var(--small-margin);
+    padding-left: calc(var(--inner-margin) / 2);
 }
 
 .triangle-right > div.title {
     justify-content: flex-end;
-    padding-right: var(--small-margin);
+    padding-right: calc(var(--inner-margin) / 2);
 }
 
 div.transparent {
@@ -283,7 +301,7 @@ div#top-shape {
 
 .triangle-right > .triangle-spacer {
     float: left;
-    shape-margin: var(--big-margin);
+    shape-margin: var(--inner-margin);
     shape-outside: polygon(
         0 0,
         100% 0,
@@ -340,7 +358,7 @@ div#top-shape {
 
 .trapezoid-right > .triangle-spacer {
     float: left;
-    shape-margin: var(--big-margin);
+    shape-margin: var(--inner-margin);
     shape-outside: polygon(
         0 0,
         100% 0,
